@@ -42,12 +42,25 @@
     
     // test lifecycle https://vuejs.org/images/lifecycle.png
     var vm = new Vue({
+        el: '#app',
         data: {
             a: 1
         },
 
         created: function(){
             console.log('a is: ' + this.a)
+        },
+
+        mounted: function(){
+            console.log('mounted')
+        },
+
+        beforeDestroy: function(){
+            console.log('beforeDestroy')
+        },
+
+        destroyed: function(){
+            console.log('destroyed')
         }
     })
     // -> "a is: 1"

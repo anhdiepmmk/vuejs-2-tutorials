@@ -1,0 +1,26 @@
+<script src="https://unpkg.com/vue"></script>
+
+
+<div id="app">
+    <div v-if="see">Can you see me ?</div>
+    <div>{{ ok ? 'YES' : 'NO' }}</div>
+    <div>Message: {{ msg }}</div>
+    <div>Reverse message: {{ msg.split(' ').reverse().join(' ') }}</div>
+    <div v-once>This will never change: {{ msg }}</div>
+    <div v-html="msg"></div>
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+    <div v-bind:id="'prefix-' + dynamicId"></div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '<h1>This is simple message</h1>',
+            isButtonDisabled: true,
+            dynamicId: 'testId',
+            ok: false,
+            see: false
+        }
+    })
+</script>
