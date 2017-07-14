@@ -1,26 +1,71 @@
 <script src="https://unpkg.com/vue"></script>
 
 
-<div id="app">
-    <div v-if="see">Can you see me ?</div>
+<!-- <div id="app">
+    <a  v-bind:href="url">google</a>
+    <div v-if="seen">Can you see me ?</div>
     <div>{{ ok ? 'YES' : 'NO' }}</div>
     <div>Message: {{ msg }}</div>
     <div>Reverse message: {{ msg.split(' ').reverse().join(' ') }}</div>
     <div v-once>This will never change: {{ msg }}</div>
     <div v-html="msg"></div>
-    <button v-bind:disabled="isButtonDisabled">Button</button>
+    <button v-on:click="doSomething" v-on:click.stop="doThis" v-bind:disabled="isButtonDisabled">Button</button>
     <div v-bind:id="'prefix-' + dynamicId"></div>
+    <button v-on:submit.prevent="onSubmit">BUTTON 2</button>
+    <button v-on:click="say('what')">Say what</button>
+    <button v-on:click="say('hi')">Say hi</button>
+</div> -->
+
+<!-- <div id="example-1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+</div> -->
+
+<div id="example-2">
 </div>
 
 <script>
-    var vm = new Vue({
-        el: '#app',
+    var example2 = new Vue({
+        el: '#example-2',
         data: {
-            msg: '<h1>This is simple message</h1>',
-            isButtonDisabled: true,
-            dynamicId: 'testId',
-            ok: false,
-            see: false
+            name: 'Vue.js'
+        },
+        methods: {
+            greet: function(event){
+                alert('Hello ' + this.name + ' !')
+            }
         }
     })
+    // var example1 = new Vue({
+    //     el: '#example-1',
+    //     data: {
+    //         counter: 0
+    //     }
+    // })
+
+    // var vm = new Vue({
+    //     el: '#app',
+    //     data: {
+    //         msg: '<h1>This is simple message</h1>',
+    //         isButtonDisabled: false,
+    //         dynamicId: 'testId',
+    //         ok: false,
+    //         seen: false,
+    //         url: '//google.com'
+    //     },
+    //     methods: {
+    //         doSomething: function(event){
+    //             console.log('doSomething')
+    //         },
+    //         doThis: function(event){
+    //             console.log('doThis')
+    //         },
+    //         onSubmit: function(event){
+    //             console.log('onSubmit')
+    //         },
+    //         say: function(message){
+    //             alert(message)
+    //         }
+    //     }
+    // })
 </script>
