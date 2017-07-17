@@ -1,0 +1,98 @@
+<script src="https://unpkg.com/vue"></script>
+
+
+<div id="app">
+    <!-- shorthand -->
+    <a :href="url" @click="doSomething">{{ message | capitalize  }}</a>
+
+    <div>
+        <li v-for="n in evenNumbers">{{ n }}</li>
+    </div>
+
+    <hr />
+
+    <!-- v-for and v-if -->
+    <div>
+        <li v-for="(todo, index) in todos" v-if="index > 0">{{ todo }}</li>
+    </div>
+
+    <hr />
+
+    <ul>
+        <li v-for="(item, index) in items">
+            {{ parentMessage }} - {{ index }} - {{ item.message }}
+        </li>
+    </ul>
+
+    <hr />
+
+    <!-- object -->
+    <div>
+        <li v-for="(value, key, index) in user_info">{{ index }} : {{ key }} : {{ value }} </li>
+    </div>
+
+    <hr />
+
+    <!-- range -->
+    <div>
+        <li v-for="n in 100">{{ n }}</li>
+    </div>
+
+    <hr />
+
+    <!-- alternatively -->
+    <div>
+        <li v-for="n in even(numbers)">{{ n }}</span>
+    </div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            url: 'http://google.com',
+            message: 'anhdiepmmk',
+            numbers: [1, 2, 3, 4, 5, 6],
+            user_info: {
+                id: 10,
+                name: 'john doe',
+                age: 18
+            },
+            parentMessage: 'parentMessage',
+            todos: [
+                'Do the dishes',
+                'Take out the trash',
+                'Mow the lawn'
+            ],
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
+        },
+        computed: {
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        },
+        methods: {
+            doSomething: function () {
+                alert('short hand test')
+            },
+            even: function (numbers) {
+                return numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        },
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            }
+        }
+    })
+
+</script>
